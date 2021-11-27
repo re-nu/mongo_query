@@ -1,0 +1,28 @@
+1.Find all the topics and tasks which are thought in the month of October
+
+   db.collection.find({ month: "October"},{topics:1,tasks: 1});
+
+2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+   
+   db.collection.find({
+      month: "October",
+          day: {
+              "$gte": 7,
+              "$lte": 9
+             }
+      },
+  {
+   company_drives: 1,
+   })
+
+3.Find the number of problems solved by the user in codekata
+     
+      db.collection.find({},{users:1,codekata: 1});
+
+4.Find all the mentors with who has the mentee's count more than 15
+
+    db.collection.find({mentee_s:{"$gt": 15}},{mentors:1});
+
+5.Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+    db.collection.find({attendance:"absent",tasks:"not submitted"},{users:1}).count();
